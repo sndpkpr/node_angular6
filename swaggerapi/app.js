@@ -1,10 +1,14 @@
 "use strict";
 
-var app = require("express")();
-var swaggerTools = require("swagger-tools");
-var YAML = require("yamljs");
-var auth = require("./api/helpers/auth");
-var swaggerConfig = YAML.load("./api/swagger/swagger.yaml");
+const app = require("express")();
+var cors = require('cors');
+const swaggerTools = require("swagger-tools");
+const YAML = require("yamljs");
+const auth = require("./api/helpers/auth");
+const swaggerConfig = YAML.load("./api/swagger/swagger.yaml");
+const allowedOrigins = require('./config/allowedOrigins')
+
+require('./config/db')
 
 swaggerTools.initializeMiddleware(swaggerConfig, function(middleware) {
   //Serves the Swagger UI on /docs
@@ -16,8 +20,22 @@ swaggerTools.initializeMiddleware(swaggerConfig, function(middleware) {
       Bearer: auth.verifyToken
     })
   );
+
+  app.use(cors({
+    origin: function(origin, callback){
+      // allow requests with no origin 
+      // (like mobile apps or curl requests)
+      if(!origin) return callback(null, true);
+      if(allowedOrigins.allowedOrigins.indexOf(origin) === -1){
+        var msg = 'The CORS policy for this site does not ' +
+                  'allow access from the specified Origin.';
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    }
+  }));
   
-  var routerConfig = {
+  const routerConfig = {
     controllers: "./api/controllers",
     useStubs: false
   };

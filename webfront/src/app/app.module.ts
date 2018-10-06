@@ -5,6 +5,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './library/shared/shared.module';
 
+// user defined services
+import {ApiService} from './library/core/services/api-service/api.service';
+import {ErrorHandlerService} from './library/core/services/error-handler/error-handler.service';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -13,8 +17,10 @@ import { SharedModule } from './library/shared/shared.module';
   ],
   declarations: [
     AppComponent,
+    ErrorHandlerService
   ],
-  providers: [],
+  providers: [ApiService,
+    ErrorHandlerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
