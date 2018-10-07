@@ -1,6 +1,7 @@
 var auth = require("../helpers/auth");
 
-exports.unprotectedGet = function(args, res, next) {
+exports.newUser = function(args, res, next) {
+  console.log(args.body)
   var response = { message: "My resource!" };
   res.writeHead(200, { "Content-Type": "application/json" });
   return res.end(JSON.stringify(response));
@@ -18,7 +19,7 @@ exports.protected2Get = function(args, res, next) {
   return res.end(JSON.stringify(response));
 };
 
-exports.loginPost = function(args, res, next) {
+exports.login = function(args, res, next) {
   var role = args.swagger.params.role.value;
   var username = args.body.username;
   var password = args.body.password;

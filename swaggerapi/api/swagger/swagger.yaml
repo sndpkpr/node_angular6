@@ -31,16 +31,15 @@ produces:
   - application/json
 paths:
 
-  /login/{role}:
-    x-swagger-router-controller: main-controller
+  /login:
+    x-swagger-router-controller: auth-controller
     post:
-      operationId: loginPost
+      tags : 
+        - Authentication
+      summary : user & admin login
+      operationId: login
       description: "Login with a particular role"
       parameters:
-        - name: role
-          in: path
-          required: true
-          type: string
         - name: authentication
           in: body
           required: true
@@ -56,16 +55,30 @@ paths:
           schema:
             $ref: "#/definitions/Error"
 
-  /unprotected:
-    x-swagger-router-controller: main-controller
-    get:
-      operationId: unprotectedGet
-      description: "Unprotected endpoint"
+  /signup:
+    x-swagger-router-controller: auth-controller
+    post:
+      operationId: newUser
+      description: "new user signup"
+      parameters:
+        - name: User data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/NewUser"
       responses:
         "200":
           description: "Success"
           schema:
             $ref: "#/definitions/Resource"
+        "406":
+          description: "Not Acceptable"
+          schema:
+            $ref: "#/definitions/Error"
+        "409":
+          description: "Conflict"
+          schema:
+            $ref: "#/definitions/Error"
 
   /protected:
     x-swagger-router-controller: main-controller
@@ -115,10 +128,45 @@ definitions:
       password:
         type: string
         example: "password"
+  NewUser:
+    type: object
+    properties:
+      firstName:
+        type: string
+        example: "firstName"
+      lastName:
+        type: string
+        example: "lastName"
+      email:
+        type: string
+        format: email
+        example: "email"
+      dob:
+        type: string
+        format: date
+        pattern: '^([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$'
+        example: "1972-06-30"
+      password:
+        type: string
+        example: "password"
+      confirm-password:
+        type: string
+        example: "password"
+      termsCond:
+        type: boolean
+        example: true
+    required:
+      - firstName
+      - lastName
+        
   Resource:
     type: object
     properties:
-      resource:
+      code:
+        type: integer
+      message1:
+        type: string
+      message2:
         type: string
   Token:
     type: object
@@ -128,5 +176,9 @@ definitions:
   Error:
     type: object
     properties:
-      message:
+      code:
+        type: integer
+      message1:
+        type: string
+      message2:
         type: string
