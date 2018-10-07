@@ -81,15 +81,15 @@
 // };
 
 // // error handler contstants
-// export enum StatusCode {
-//   Ok = 200,
-//   Created = 201,
-//   BadRequest = 400,
-//   Unauthorized = 401,
-//   Forbidden = 403,
-//   NotFound = 404,
-//   InteralServerError = 500
-// }
+export enum StatusCode {
+  Ok = 200,
+  Created = 201,
+  BadRequest = 400,
+  Unauthorized = 401,
+  Forbidden = 403,
+  NotFound = 404,
+  InteralServerError = 500
+}
 // export enum GlobalDatabaseObjects {
 //   Individual_Dashboard_Feed_Post = 22,
 //   Post_Like = 2,
@@ -100,15 +100,15 @@
 //   Comment_Like = 20,
 //   Connection_Post = 10
 // }
-// export const StatusMessage = {
-//   Ok: 'OK (Deleted, GET , UPDATED)',
-//   Created: 'Created (CREATED)',
-//   BadRequest: 'Bad Request (MISSING REQUIED INFO)',
-//   Unauthorized: 'Unauthorized (AUTHENTICATION REQUIRED)',
-//   Forbidden: 'Forbidden (YOU ARE NOT AUTHORIZED TO ACCESS)',
-//   NotFound: '404 Not Found (RECORD NOT FOUND)',
-//   InteralServerError: '500 Internal Server Error (DATABASE ERROR, CONNECTION,MISC SERVER ISSUE)'
-// };
+export const StatusMessage = {
+  Ok: 'OK (Deleted, GET , UPDATED)',
+  Created: 'Created (CREATED)',
+  BadRequest: 'Bad Request (MISSING REQUIED INFO)',
+  Unauthorized: 'Unauthorized (AUTHENTICATION REQUIRED)',
+  Forbidden: 'Forbidden (YOU ARE NOT AUTHORIZED TO ACCESS)',
+  NotFound: '404 Not Found (RECORD NOT FOUND)',
+  InteralServerError: '500 Internal Server Error (DATABASE ERROR, CONNECTION,MISC SERVER ISSUE)'
+};
 // // Core API Urls
 // export const CoreAPIURLs = {
 //   loginUrl: 'api/Account/token',

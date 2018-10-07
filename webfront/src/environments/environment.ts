@@ -2,9 +2,9 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
-};
+// export const environment = {
+//   production: false
+// };
 
 /*
  * For easier debugging in development mode, you can import the following file
@@ -14,3 +14,17 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+import { InjectionToken, Injector } from '@angular/core';
+export class Environment {
+  production = false;
+  baseUrl = 'http://localhost:3000/';
+  cloudinaryBaseUrl = 'https://res.cloudinary.com/dffx3eqxk/image/upload/';
+}
+
+const injector = Injector.create([
+  { provide: Environment, useClass: Environment, deps: [] }
+]);
+
+export const environment: Environment = injector.get(Environment);
