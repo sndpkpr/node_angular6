@@ -8,7 +8,11 @@ import { GlobalFooterComponent } from './components/global-footer/global-footer.
   imports: [
     CommonModule
   ],
-  declarations: [HomeComponent, GlobalHeaderComponent, GlobalFooterComponent],
-  exports: [GlobalHeaderComponent]
+  declarations: [HomeComponent,
+                GlobalHeaderComponent,
+                GlobalFooterComponent],
+
+  exports: [GlobalHeaderComponent,
+            GlobalFooterComponent]
 })
 export class SharedModule { }
