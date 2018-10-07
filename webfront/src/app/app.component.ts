@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+declare var $;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,11 +10,15 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class AppComponent implements OnInit {
   title = 'Hycarebrid';
-  constructor(private router: Router, translate: TranslateService) {
+  constructor(private router: Router, translate: TranslateService, private http: HttpClient) {
     translate.setDefaultLang('en-US');
     translate.use('en-US');
    }
 
   ngOnInit() {
+    // this.http.get('../assets/countr.json')
+    // .subscribe((data) => {
+    //   console.log(data);
+    // });
   }
 }

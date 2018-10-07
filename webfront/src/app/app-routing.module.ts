@@ -10,12 +10,12 @@ const routes: Routes = [
     component: AppComponent,
     children: [
       {
-        path: 'login',
+        path: '',
         loadChildren: './library/shared/auth/auth.module#AuthModule',
         // canActivate: [AnonymousGuard]
       },
       {
-        path: 'signup',
+        path: '',
         loadChildren: './library/shared/auth/auth.module#AuthModule',
         // canActivate: [AnonymousGuard]
       },
