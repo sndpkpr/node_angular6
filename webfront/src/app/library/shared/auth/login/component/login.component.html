@@ -2,16 +2,13 @@
 <p>
   login works!
 </p>
-<form [formGroup]="loginForm" (ngSubmit)="doLogin()">
-  <label>
-    First Name:
+<form [formGroup]="loginForm" (submit)="doLogin()">
+  
+  <label for="name">Name</label>
     <input type="text" formControlName="Username">
-  </label>
 
-  <label>
-    Last Name:
-    <input type="password formControlName="Password">
-  </label>
+    <label for="name">Name</label>
+    <input type="password" formControlName="Password">
   <button type="submit" [disabled]="!loginForm.valid">Submit</button>
 </form>
 <app-global-footer></app-global-footer>

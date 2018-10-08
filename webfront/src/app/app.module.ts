@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CookieModule, CookieService, COOKIE_OPTIONS } from 'ngx-cookie';
@@ -13,6 +14,7 @@ import { SharedModule } from './library/shared/shared.module';
 // user defined services
 import {ApiService} from './library/core/services/api-service/api.service';
 import {ErrorHandlerService} from './library/core/services/error-handler/error-handler.service';
+import { NotificationService } from 'src/app/library/core/services/notification-service/notification.service';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,6 +31,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    CookieModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -41,7 +45,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
   ],
   providers: [ApiService,
-    ErrorHandlerService],
+    ErrorHandlerService,
+    NotificationService,
+    CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

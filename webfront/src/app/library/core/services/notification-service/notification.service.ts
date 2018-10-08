@@ -10,9 +10,9 @@ export class NotificationService {
   public messageNotificationCount: number;
   public  restrictFunnelOnReload: boolean;
   constructor(private toastr: ToastrService, private translateservice: TranslateService, private cookie: CookieService) {
-    this.toastr.toastrConfig.closeButton = false;
     this.toastr.toastrConfig.autoDismiss = true;
     this.toastr.toastrConfig.tapToDismiss = true;
+    this.toastr.toastrConfig.closeButton = false;
     this.notificationCount = 0;
     this.messageNotificationCount = 0;
   }

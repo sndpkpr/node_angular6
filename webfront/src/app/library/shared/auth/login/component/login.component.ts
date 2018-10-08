@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../../../../core/services/notification-service/notification.service';
 import { Subscription } from 'rxjs';
 import { LoaderService } from '../../../services/loader/loader.service';
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     private loaderService: LoaderService) { }
 
   ngOnInit() {
+    this.createForm();
   }
   createForm() {
     this.loginForm = this.fb.group({
