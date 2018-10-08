@@ -1,43 +1,41 @@
-var auth = require("../helpers/auth");
+const auth = require("../helpers/auth");
 
-exports.newUser = function(args, res, next) {
-  console.log(args.body)
-  var response = { message: "My resource!" };
+exports.newUser = function(req, res, next) {
+  console.log(req.body)
+  let response = { message: "My resource!" };
   res.writeHead(200, { "Content-Type": "application/json" });
   return res.end(JSON.stringify(response));
 };
 
-exports.protectedGet = function(args, res, next) {
-  var response = { message: "My protected resource for admins and users!" };
-  res.writeHead(200, { "Content-Type": "application/json" });
-  return res.end(JSON.stringify(response));
-};
-
-exports.protected2Get = function(args, res, next) {
-  var response = { message: "My protected resource for admins!" };
-  res.writeHead(200, { "Content-Type": "application/json" });
-  return res.end(JSON.stringify(response));
-};
-
-exports.login = function(args, res, next) {
-  var role = args.swagger.params.role.value;
-  var username = args.body.username;
-  var password = args.body.password;
-
-  if (role != "user" && role != "admin") {
-    var response = { message: 'Error: Role must be either "admin" or "user"' };
-    res.writeHead(400, { "Content-Type": "application/json" });
+exports.login = function(req, res, next) { 
+  const username = req.body.username;
+  const password = req.body.password;
+  
+  if(username == 'admin@hycarebrid.com' &&  password == '12345678') {
+    const tokenString = auth.issueToken(username);
+    let response = { token: tokenString, admin:"" };
+    res.writeHead(200, { "Content-Type": "application/json" });
     return res.end(JSON.stringify(response));
-  }
-
-  if (username == "username" && password == "password" && role) {
-    var tokenString = auth.issueToken(username, role);
-    var response = { token: tokenString };
+  } else if (username && password) {
+    const tokenString = auth.issueToken(username);
+    let response = { token: tokenString, user:"" };
     res.writeHead(200, { "Content-Type": "application/json" });
     return res.end(JSON.stringify(response));
   } else {
-    var response = { message: "Error: Credentials incorrect" };
-    res.writeHead(403, { "Content-Type": "application/json" });
+    let response = { data: "Invalid Input" };
+    res.writeHead(406, { "Content-Type": "application/json" });
     return res.end(JSON.stringify(response));
   }
+};
+
+exports.protectedGet = function(req, res, next) {
+  let response = { message: "My protected resource for admins and users!" };
+  res.writeHead(200, { "Content-Type": "application/json" });
+  return res.end(JSON.stringify(response));
+};
+
+exports.protected2Get = function(req, res, next) {
+  let response = { message: "My protected resource for admins!" };
+  res.writeHead(200, { "Content-Type": "application/json" });
+  return res.end(JSON.stringify(response));
 };

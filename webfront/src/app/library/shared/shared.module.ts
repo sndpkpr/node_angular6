@@ -34,14 +34,16 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
   ],
   declarations: [HomeComponent,
-                GlobalHeaderComponent,
-                GlobalFooterComponent,
-                AvatarComponent,
-                ValidationsComponent],
+    GlobalHeaderComponent,
+    GlobalFooterComponent,
+    AvatarComponent,
+    ValidationsComponent
+  ],
 
   exports: [GlobalHeaderComponent,
-            GlobalFooterComponent,
-            TranslateModule,
-            ReactiveFormsModule]
+    GlobalFooterComponent,
+    TranslateModule,
+    ReactiveFormsModule
+  ]
 })
 export class SharedModule { }

@@ -1,22 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AnonymousGuard, AuthenticatedAdmin, AuthenticatedUser } from './library/core/services/auth-service/anonymous-guard.service';
 import { HomeComponent } from './library/shared/components/home/home.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  {
+    path: '',
+    component: HomeComponent,
+    canActivate: [AnonymousGuard]
+  },
   {
     path: '',
     component: AppComponent,
     children: [
       {
-        path: '',
+        path: 'auth',
         loadChildren: './library/shared/auth/auth.module#AuthModule',
         // canActivate: [AnonymousGuard]
       },
       {
         path: '',
-        loadChildren: './library/shared/auth/auth.module#AuthModule',
+        loadChildren: './areas/users/users.module#UsersModule',
         // canActivate: [AnonymousGuard]
       },
       // {

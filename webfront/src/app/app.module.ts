@@ -15,8 +15,7 @@ import { SharedModule } from './library/shared/shared.module';
 import {ApiService} from './library/core/services/api-service/api.service';
 import {ErrorHandlerService} from './library/core/services/error-handler/error-handler.service';
 import { NotificationService } from 'src/app/library/core/services/notification-service/notification.service';
-
-
+import { AnonymousGuard, AuthenticatedAdmin, AuthenticatedUser } from './library/core/services/auth-service/anonymous-guard.service';
 export function HttpLoaderFactory(http: HttpClient) {
   // return new TranslateHttpLoader(http);
   const cacheBustSuffix = Date.now();
@@ -42,12 +41,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
   ],
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   providers: [ApiService,
     ErrorHandlerService,
     NotificationService,
-    CookieService],
+    CookieService,
+    AnonymousGuard,
+    AuthenticatedAdmin,
+    AuthenticatedUser],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

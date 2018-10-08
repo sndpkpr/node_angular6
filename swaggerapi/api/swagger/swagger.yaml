@@ -222,8 +222,6 @@ definitions:
   Resource:
     type: object
     properties:
-      code:
-        type: integer
       message1:
         type: string
       message2:
@@ -236,8 +234,6 @@ definitions:
   Error:
     type: object
     properties:
-      code:
-        type: integer
       message1:
         type: string
       message2:

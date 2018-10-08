@@ -1,8 +1,8 @@
 "use strict";
 
-var jwt = require("jsonwebtoken");
-var sharedSecret = "shh";
-var issuer = "my-awesome-website.com";
+const jwt = require("jsonwebtoken");
+const sharedSecret = "shh";
+const issuer = "my-awesome-website.com";
 
 //Here we setup the security checks for the endpoints
 //that need it (in our case, only /protected). This
@@ -10,7 +10,7 @@ var issuer = "my-awesome-website.com";
 //endpoint is received
 exports.verifyToken = function(req, authOrSecDef, token, callback) {
   //these are the scopes/roles defined for the current endpoint
-  var currentScopes = req.swagger.operation["x-security-scopes"];
+  const currentScopes = req.swagger.operation["x-security-scopes"];
 
   function sendError() {
     return req.res.status(403).json({ message: "Error: Access Denied" });
@@ -19,7 +19,7 @@ exports.verifyToken = function(req, authOrSecDef, token, callback) {
   //validate the 'Authorization' header. it should have the following format:
   //'Bearer tokenString'
   if (token && token.indexOf("Bearer ") == 0) {
-    var tokenString = token.split(" ")[1];
+    const tokenString = token.split(" ")[1];
 
     jwt.verify(tokenString, sharedSecret, function(
       verificationError,
@@ -33,9 +33,9 @@ exports.verifyToken = function(req, authOrSecDef, token, callback) {
         decodedToken.role
       ) {
         // check if the role is valid for this endpoint
-        var roleMatch = currentScopes.indexOf(decodedToken.role) !== -1;
+        const roleMatch = currentScopes.indexOf(decodedToken.role) !== -1;
         // check if the issuer matches
-        var issuerMatch = decodedToken.iss == issuer;
+        const issuerMatch = decodedToken.iss == issuer;
 
         // you can add more verification checks for the
         // token here if necessary, such as checking if
@@ -63,7 +63,7 @@ exports.verifyToken = function(req, authOrSecDef, token, callback) {
 };
 
 exports.issueToken = function(username, role) {
-  var token = jwt.sign(
+  const token = jwt.sign(
     {
       sub: username,
       iss: issuer,

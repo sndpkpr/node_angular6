@@ -26,6 +26,7 @@ export class MembershipService {
     return this.apiservice.postData(CoreAPIURLs.registerUrl, body, null)
       .pipe(map((res) => {
         if (res) {
+          console.log(res.status);
           return res;
           // return this.getUserByName('api/Account/GetuserDetailsByUserName',body);
         }
