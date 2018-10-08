@@ -20,4 +20,15 @@ export class MembershipService {
         }
       }));
   }
+
+  signUp(body: {}) {
+    // logic for login
+    return this.apiservice.postData(CoreAPIURLs.registerUrl, body, null)
+      .pipe(map((res) => {
+        if (res) {
+          return res;
+          // return this.getUserByName('api/Account/GetuserDetailsByUserName',body);
+        }
+      }));
+  }
 }

@@ -2,4 +2,29 @@
 <p>
   singup works!
 </p>
+<form [formGroup]="registerForm" (submit)="doSignUp()">
+  
+  <label for="name">firstName</label>
+  <input type="text" formControlName="firstName">
+  
+  <label for="name">lastName</label>
+  <input type="text" formControlName="lastName">
+
+  <label for="name">email</label>
+  <input type="email" formControlName="email">
+
+  <label for="name">dob</label>
+  <input type="text" formControlName="dob">
+
+  <label for="name">password</label>
+  <input type="password" formControlName="password">
+
+  <label for="name">confirmPassword</label>
+  <input type="password" formControlName="confirmPassword">
+
+  <label for="name">terms</label>
+  <input type="text" formControlName="termsCond">
+
+  <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+</form>
 <app-global-footer></app-global-footer>

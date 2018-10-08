@@ -31,7 +31,7 @@ produces:
   - application/json
 paths:
 
-  /login:
+  /Auth/login:
     x-swagger-router-controller: auth-controller
     post:
       tags : 
@@ -55,9 +55,12 @@ paths:
           schema:
             $ref: "#/definitions/Error"
 
-  /signup:
+  /Auth/register:
     x-swagger-router-controller: auth-controller
     post:
+      tags : 
+        - Authentication
+      summary : new user register
       operationId: newUser
       description: "new user signup"
       parameters:
@@ -79,6 +82,63 @@ paths:
           description: "Conflict"
           schema:
             $ref: "#/definitions/Error"
+    
+  /Auth/reset-password:
+    x-swagger-router-controller: auth-controller
+    post:
+      tags : 
+        - Authentication
+      summary : new user register
+      operationId: newUser
+      description: "new user signup"
+      parameters:
+        - name: User data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/NewUser"
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Resource"
+        "406":
+          description: "Not Acceptable"
+          schema:
+            $ref: "#/definitions/Error"
+        "409":
+          description: "Conflict"
+          schema:
+            $ref: "#/definitions/Error"
+  
+  /Auth/forget-password:
+    x-swagger-router-controller: auth-controller
+    post:
+      tags : 
+        - Authentication
+      summary : new user register
+      operationId: newUser
+      description: "new user signup"
+      parameters:
+        - name: User data
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/NewUser"
+      responses:
+        "200":
+          description: "Success"
+          schema:
+            $ref: "#/definitions/Resource"
+        "406":
+          description: "Not Acceptable"
+          schema:
+            $ref: "#/definitions/Error"
+        "409":
+          description: "Conflict"
+          schema:
+            $ref: "#/definitions/Error"  
+    
 
   /protected:
     x-swagger-router-controller: main-controller
@@ -149,7 +209,7 @@ definitions:
       password:
         type: string
         example: "password"
-      confirm-password:
+      confirmPassword:
         type: string
         example: "password"
       termsCond:
