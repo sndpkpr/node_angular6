@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
-import { AnonymousGuard } from '../../library/core/services/auth-service/anonymous-guard.service';
+import { AnonymousGuard, AuthenticatedUser } from '../../library/core/services/auth-service/anonymous-guard.service';
 const userRoutes: Routes = [
   {
     path: '',
@@ -10,8 +10,13 @@ const userRoutes: Routes = [
     children: [
       {
         path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+      {
+        path: 'dashboard',
         loadChildren: './modules/dashboard/dashboard.module#DashboardModule',
-        canActivate: [AnonymousGuard]
+        canActivate: [AuthenticatedUser]
       },
       // {
       //   path: 'benefits',

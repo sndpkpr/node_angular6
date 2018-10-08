@@ -5,6 +5,11 @@ import { SingupComponent } from './singup/singup.component';
 import { AnonymousGuard } from '../../core/services/auth-service/anonymous-guard.service';
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
     path: 'login',
     component: LoginComponent,
     canActivate: [AnonymousGuard]

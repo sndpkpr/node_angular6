@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 
 
 const dashboardRoutes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
+  // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: '', component: DashboardComponent },
 ];
 @NgModule({
   imports: [

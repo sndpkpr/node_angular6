@@ -10,12 +10,13 @@ import { Observable } from 'rxjs';
  * token present or not
  */
 export class AnonymousGuard implements CanActivate {
-  constructor() { }
+  constructor(private router: Router) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      console.log('sasasasa');
       return true;
+      // this.router.navigate(['/dashboard']);
+      // return false;
   }
 }
 
