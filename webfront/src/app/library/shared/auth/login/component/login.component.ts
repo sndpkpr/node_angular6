@@ -4,6 +4,7 @@ import { NotificationService } from '../../../../core/services/notification-serv
 import { Subscription } from 'rxjs';
 import { LoaderService } from '../../../services/loader/loader.service';
 import { CookieService } from 'ngx-cookie';
+import { MembershipService } from 'src/app/library/core/services/membership-service/membership.service';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,7 @@ import { CookieService } from 'ngx-cookie';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
+  service: Subscription;
   emailPattern = /^([\w-\.]+\u0040([\w-]+\.)+[\w-]{2,4})?$/;
 
   profileForm = new FormGroup({
@@ -21,6 +23,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private fb: FormBuilder,
+    private membershipservice: MembershipService,
     private notificationservice: NotificationService,
     private loaderService: LoaderService) { }
 
@@ -29,12 +32,20 @@ export class LoginComponent implements OnInit {
   }
   createForm() {
     this.loginForm = this.fb.group({
-      Username: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-      Password: ['', Validators.required]
+      username: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      password: ['', Validators.required]
     });
   }
   doLogin() {
-    console.log('doLogin');
+    console.log('doLogin', this.loginForm.value);
+
+    this.service = this.membershipservice.login(this.loginForm.value).subscribe(res => {
+      if (res) {
+
+      } else {
+
+      }
+    });
   }
 
 }

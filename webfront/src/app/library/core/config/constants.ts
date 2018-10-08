@@ -109,20 +109,20 @@ export const StatusMessage = {
   NotFound: '404 Not Found (RECORD NOT FOUND)',
   InteralServerError: '500 Internal Server Error (DATABASE ERROR, CONNECTION,MISC SERVER ISSUE)'
 };
-// // Core API Urls
-// export const CoreAPIURLs = {
-//   loginUrl: 'api/Account/token',
-//   getuserDetailsByUserNameUrl: 'api/Account/GetuserDetailsByUserName',
-//   getCategoryListUrl: 'api/common/getCategoryList',
-//   getGroupListUrl: 'api/common/getGroupList',
-//   getEventListUrl: 'api/common/getEventList',
-//   getDiscussionListUrl: 'api/common/getDiscussionList',
-//   uploadImageToCloudinary: 'api/cloudinary/uploadImageToCloudinary',
-//   uploadFile: 'api/Facilitator/upload',
-//   deactivateBulkUser: '/api/Facilitator/uploadDeactivatingUser',
-//   getAllConnectionByIdForTagging: 'api/common/getAllConnectionByIdForTagging',
-//   generateSignatureForCloudinary: 'api/cloudinary/generateSignatureForCloudinary'
-// };
+// Core API Urls
+export const CoreAPIURLs = {
+  loginUrl: 'api/login',
+  getuserDetailsByUserNameUrl: 'api/Account/GetuserDetailsByUserName',
+  getCategoryListUrl: 'api/common/getCategoryList',
+  getGroupListUrl: 'api/common/getGroupList',
+  getEventListUrl: 'api/common/getEventList',
+  getDiscussionListUrl: 'api/common/getDiscussionList',
+  uploadImageToCloudinary: 'api/cloudinary/uploadImageToCloudinary',
+  uploadFile: 'api/Facilitator/upload',
+  deactivateBulkUser: '/api/Facilitator/uploadDeactivatingUser',
+  getAllConnectionByIdForTagging: 'api/common/getAllConnectionByIdForTagging',
+  generateSignatureForCloudinary: 'api/cloudinary/generateSignatureForCloudinary'
+};
 // export const PlaceholderImagePaths = {
 //   noImageURL: 'api/Account/token'
 // };
