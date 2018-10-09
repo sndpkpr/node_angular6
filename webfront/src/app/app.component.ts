@@ -15,9 +15,5 @@ export class AppComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.http.get('../assets/countr.json')
-    // .subscribe((data) => {
-    //   console.log(data);
-    // });
   }
 }

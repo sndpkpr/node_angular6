@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { LoaderService } from '../../../services/loader/loader.service';
 import { CookieService } from 'ngx-cookie';
 import { MembershipService } from 'src/app/library/core/services/membership-service/membership.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private membershipservice: MembershipService,
     private notificationservice: NotificationService,
-    private loaderService: LoaderService) { }
+    private loaderService: LoaderService,
+    private router: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -37,11 +39,11 @@ export class LoginComponent implements OnInit {
     });
   }
   doLogin() {
-    console.log('doLogin', this.loginForm.value);
+    this.router.navigate(['/dashboard']);
 
     this.service = this.membershipservice.login(this.loginForm.value).subscribe(res => {
       if (res) {
-
+        // console.log(res.status, '----');
       } else {
 
       }
