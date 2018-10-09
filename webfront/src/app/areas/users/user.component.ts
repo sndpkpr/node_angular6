@@ -7,10 +7,6 @@ import { Component, OnInit } from '@angular/core';
   <router-outlet></router-outlet>
   </div>
   <user-footer></user-footer>`
-  // template: `<user-header></user-header>
-  // <div>
-  // </div>
-  // <user-footer></user-footer>`
 })
 export class UserComponent implements OnInit {
 

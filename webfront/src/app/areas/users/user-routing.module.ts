@@ -61,13 +61,13 @@ const userRoutes: Routes = [
       // {
       //   path: 'feed',
       //   loadChildren: './modules/feed/feed.module#FeedModule',
-      //   canActivate: [AuthenticatedCompany]
+      //   canActivate: [AuthenticatedUser]
       // },
-      // {
-      //   path: 'profile',
-      //   loadChildren: './modules/profile/profile.module#ProfileModule',
-      //   canActivate: [AuthenticatedCompany]
-      // },
+      {
+        path: 'profile',
+        loadChildren: './modules/profile/profile.module#ProfileModule',
+        canActivate: [AuthenticatedUser]
+      },
       // {
       //   path: 'favorites',
       //   loadChildren: './modules/favourites/favourites.module#FavouritesModule',
