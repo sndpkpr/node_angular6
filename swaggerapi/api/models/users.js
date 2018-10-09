@@ -1,52 +1,48 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-var favorite = require('./favourites')
-var tempUserSchema = new mongoose.Schema({
+var userSchema = new mongoose.Schema({
     firstName: { type: String },
     lastName: { type: String },
     emailRegister: { type: String },
-    dob: { type: Date },
+    dob: { type: Date},
     password: { type: String },
+    role_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'roles',
+        required: true
+    },
     active: {type: Boolean, default: false},
     deleted: {type: Boolean, default: false},
     disabled: {type: Boolean, default: false},
     profileImage: {type: String},
     phone: {type: Number},
+    is_loggedin:{type: Boolean},
     token : {
-        ref: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'tokens'
-        }
     },
     skills: [{
-        ref: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'skills'
-        }
     }],
     location: {
-        ref: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'userLocations'
-        }
     },
     businessDetail: {
-        ref: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'businesses'
-        }
     },
     stripDetail : {
-        ref: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'stripeDetails'
-        }
-    }
+    },
+    bio : { type: String }
     // modifiedOn: [{
     //     lastBody: { type: String },
     //     datedOn: { type: Date, default: Date.now }
     // }] 
 }, { timestamps: true });
 
-var users = mongoose.model('tempUsers', tempUserSchema);
+var users = mongoose.model('users', userSchema);
 module.exports = users;
