@@ -1,5 +1,5 @@
 module.exports = {
-    "STATUSCODE" : {
+    "statusCodeMessage" : {
         "OK" : {
             "Code": 200,
             "Message": "OK"
@@ -44,6 +44,19 @@ module.exports = {
             "Code": 406,
             "Message": "Not-Acceptable"
         },
+    },
+    "statusCode" : {
+        "OK" :  200,
+        "Created" :  201,
+        "Accepted" : 202,
+        "No-Content" : 204,
+        "Not-Modified" : 304,
+        "Bad-Request" : 400,
+        "Unauthorized" : 401,
+        "Forbidden" : 403,
+        "NotFound" : 404,
+        "Conflict" : 409,
+        "NotAcceptable" : 406
     },
     'protcol': 'http',
 
