@@ -15,7 +15,7 @@ exports.newUser = function (req, res, next) {
       saveData.save(function (err, val) {
         if (err) {
           let response = { message: "mongoErr", err: err };
-          res.writeHead(statusCode.BadRequest, { "Content-Type": "application/json" });
+          res.writeHead(statusCode.OK, { "Content-Type": "application/json" });
           return res.end(JSON.stringify(response));
         } else if (val) {
           let response = { message: "created", err: "no-reponse" };
@@ -23,7 +23,7 @@ exports.newUser = function (req, res, next) {
           return res.end(JSON.stringify(response));
         } else {
           let response = { message: "mongoErr", err: "no-reponse" };
-          res.writeHead(statusCode.NoContent, { "Content-Type": "application/json" });
+          res.writeHead(statusCode.OK, { "Content-Type": "application/json" });
           return res.end(JSON.stringify(response));
         }
       })
@@ -47,11 +47,11 @@ exports.login = function (req, res, next) {
     .exec(function (err, data) {
       if (err) {
         let response = { err: "Mongo Err", reply: "Invalid Input" };
-        res.writeHead(statusCode.NotAcceptable, { "Content-Type": "application/json" });
+        res.writeHead(statusCode.OK, { "Content-Type": "application/json" });
         return res.end(JSON.stringify(response));
       } else if (!data) {
         let response = { err: "No Data", reply: "Invalid Input" };
-        res.writeHead(statusCode.NotAcceptable, { "Content-Type": "application/json" });
+        res.writeHead(statusCode.OK, { "Content-Type": "application/json" });
         return res.end(JSON.stringify(response));
       } else if (data) {
         const tokenString = auth.issueToken(data);

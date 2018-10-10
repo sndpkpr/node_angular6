@@ -14,7 +14,7 @@ export class MembershipService {
     // logic for login
     return this.apiservice.postData(CoreAPIURLs.loginUrl, body, null)
       .pipe(map((res) => {
-        if (res) {
+        if (res && res.status === 200) {
           return res;
           // return this.getUserByName('api/Account/GetuserDetailsByUserName',body);
         }

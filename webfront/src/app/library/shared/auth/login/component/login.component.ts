@@ -39,13 +39,13 @@ export class LoginComponent implements OnInit {
     });
   }
   doLogin() {
-    this.router.navigate(['/dashboard']);
-
     this.service = this.membershipservice.login(this.loginForm.value).subscribe(res => {
-      if (res) {
-        // console.log(res.status, '----');
+      if (res && res.body === 200) {
+        this.router.navigate(['/dashboard']);
+      } else if (res) {
+        this.notificationservice.Warning({ message: 'message', title: 'title' });
       } else {
-
+        this.notificationservice.Error({ message: 'message', title: 'title' });
       }
     });
   }

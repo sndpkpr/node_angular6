@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var rolesSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const rolesSchema = new mongoose.Schema({
     roleName: { 
         type: String,
         enum : ['Admin','User'],
@@ -14,5 +14,5 @@ var rolesSchema = new mongoose.Schema({
     description: { type: String },
 }, { timestamps: true });
 
-var users = mongoose.model('roles', rolesSchema);
+const users = mongoose.model('roles', rolesSchema);
 module.exports = users;
