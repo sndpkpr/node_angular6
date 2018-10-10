@@ -7,6 +7,7 @@ import { CookieService } from 'ngx-cookie';
 import { MembershipService } from 'src/app/library/core/services/membership-service/membership.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
   doLogin() {
     this.service = this.membershipservice.login(this.loginForm.value).subscribe(res => {
       if (res && res.body === 200) {
+        this.notificationservice.Success({ message: 'message', title: 'title' });
         this.router.navigate(['/dashboard']);
       } else if (res) {
         this.notificationservice.Warning({ message: 'message', title: 'title' });
