@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs';
 import { LoaderService } from '../../services/loader/loader.service';
 import { CookieService } from 'ngx-cookie';
 import { MembershipService } from 'src/app/library/core/services/membership-service/membership.service';
+import {CalendarModule} from 'primeng/calendar';
+import {CaptchaModule} from 'primeng/captcha';
 
 @Component({
   selector: 'app-singup',
@@ -16,6 +18,7 @@ export class SingupComponent implements OnInit {
   registerForm: FormGroup;
   service: Subscription;
   emailPattern = /^([\w-\.]+\u0040([\w-]+\.)+[\w-]{2,4})?$/;
+  value: Date;
 
   constructor(private fb: FormBuilder,
     private membershipservice: MembershipService,
@@ -27,9 +30,9 @@ export class SingupComponent implements OnInit {
   }
   createForm() {
     this.registerForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]],
+      lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z]+')]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern(this.emailPattern)]],
       dob: ['', [Validators.required]],
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],

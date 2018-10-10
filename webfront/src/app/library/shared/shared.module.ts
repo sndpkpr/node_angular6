@@ -10,8 +10,12 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+
+import { CalendarModule } from 'primeng/calendar';
+import {CaptchaModule} from 'primeng/captcha';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   // return new TranslateHttpLoader(http);
@@ -25,6 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     RouterModule,
     ToastrModule.forRoot(),
+    CalendarModule,
+    CaptchaModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -43,7 +49,11 @@ export function HttpLoaderFactory(http: HttpClient) {
   exports: [GlobalHeaderComponent,
     GlobalFooterComponent,
     TranslateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    CalendarModule,
+    CaptchaModule,
+    ValidationsComponent
   ]
 })
 export class SharedModule { }

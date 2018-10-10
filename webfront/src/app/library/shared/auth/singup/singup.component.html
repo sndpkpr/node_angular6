@@ -1,12 +1,12 @@
 <app-global-header></app-global-header>
-<p>
+<!-- <p>
   singup works!
-</p>
-<form [formGroup]="registerForm" (submit)="doSignUp()">
-  
+</p> -->
+<!-- <form [formGroup]="registerForm" (submit)="doSignUp()">
+
   <label for="name">firstName</label>
   <input type="text" formControlName="firstName">
-  
+
   <label for="name">lastName</label>
   <input type="text" formControlName="lastName">
 
@@ -26,5 +26,26 @@
   <input type="text" formControlName="termsCond">
 
   <button type="submit" [disabled]="!registerForm.valid">Submit</button>
-</form>
+</form> -->
+
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="doSignUp()">
+    FN:<input class="form-control" autocomplete="true" name="user" type="text" formControlName="firstName">
+    <app-validations [control]="registerForm.controls.firstName" [RequiredMessage]="'Group_name_is_required'"></app-validations>
+    LN:<input class="form-control" autocomplete="true" name="user" type="text" formControlName="lastName">
+    <app-validations [control]="registerForm.controls.lastName" [RequiredMessage]="'Group_name_is_required'"></app-validations>
+    EMAIL:<input class="form-control" autocomplete="true" name="user" type="text" formControlName="email">
+    <app-validations [control]="registerForm.controls.email" [RequiredMessage]="'Group_name_is_required'"></app-validations>
+    <!-- DOB:<input class="form-control" autocomplete="true" name="user" type="text" formControlName="dob"> -->
+    <p-calendar class="form-control" formControlName="dob" [showIcon]="true"></p-calendar>
+    <app-validations [control]="registerForm.controls.dob" [RequiredMessage]="'Group_name_is_required'"></app-validations>
+    Pass<input class="form-control" autocomplete="true" name="user" type="text" formControlName="password">
+    <app-validations [control]="registerForm.controls.password" [RequiredMessage]="'Group_name_is_required'"></app-validations>
+    Cpass<input class="form-control" autocomplete="true" name="user" type="text" formControlName="confirmPassword">
+    <app-validations [control]="registerForm.controls.confirmPassword" [RequiredMessage]="'Group_name_is_required'"></app-validations>
+    <input class="" autocomplete="true" name="user" type="checkbox" formControlName="termsCond">Tems
+    <app-validations [control]="registerForm.controls.checkbox" [RequiredMessage]="'Group_name_is_required'"></app-validations>
+    <button class="btn btn-info btn-block login" type="submit" [disabled]="!registerForm.valid"> {{'Sign_in' | translate}} </button>
+  </form>
+</div>
 <app-global-footer></app-global-footer>

@@ -1,14 +1,22 @@
 <app-global-header></app-global-header>
-<p>
-  login works!
-</p>
-<form [formGroup]="loginForm" (submit)="doLogin()">
+<!-- <form [formGroup]="loginForm" (submit)="doLogin()">
   
   <label for="name">Name</label>
     <input type="text" formControlName="username">
 
     <label for="name">Name</label>
     <input type="password" formControlName="password">
-  <button type="submit" [disabled]="!loginForm.valid">Submit</button>
-</form>
+  <button type="submit" >Submit</button>
+</form> -->
+<div class="container">
+  <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+    <input class="form-control" autocomplete="true" name="user" type="text" placeholder="{{'Enter_your_email' | translate}}"
+      formControlName="username">
+    <input class="form-control" autocomplete="true" name="user" type="{{showPassword ? 'text' : 'password'}}" placeholder="{{'Enter_your_password' | translate}}"
+      formControlName="password">
+    <i [ngClass]="showPassword ? 'fa fa-eye-slash showHideIcon' : 'fa fa-eye showHideIcon'" (mousedown)="showPassword = true"
+      (mouseup)="showPassword = false" class="fa formEye loginDesktop fa-eye" data-ce-key="960"></i>
+    <button class="btn btn-info btn-block login" type="submit" [disabled]="!loginForm.valid"> {{'Sign_in' | translate}} </button>
+  </form>
+</div>
 <app-global-footer></app-global-footer>

@@ -6,6 +6,7 @@ import { CookieModule, CookieService, COOKIE_OPTIONS } from 'ngx-cookie';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,6 +32,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     CookieModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
