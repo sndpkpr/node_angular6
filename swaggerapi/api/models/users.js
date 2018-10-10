@@ -1,9 +1,9 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var userSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const userSchema = new mongoose.Schema({
     firstName: { type: String },
     lastName: { type: String },
-    emailRegister: { type: String },
+    email: { type: String },
     dob: { type: Date},
     password: { type: String },
     role_id: {
@@ -44,5 +44,5 @@ var userSchema = new mongoose.Schema({
     // }] 
 }, { timestamps: true });
 
-var users = mongoose.model('users', userSchema);
+const users = mongoose.model('users', userSchema);
 module.exports = users;

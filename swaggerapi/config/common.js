@@ -12,15 +12,15 @@ module.exports = {
             "Code": 202,
             "Message": "Accepted"
         },
-        "No-Content" : {
+        "NoContent" : {
             "Code": 204,
             "Message": "No Content"
         },
-        "Not-Modified" : {
+        "NotModified" : {
             "Code": 304,
             "Message": "Not Modified"
         },
-        "Bad-Request" : {
+        "BadRequest" : {
             "Code": 400,
             "Message": "Created"
         },
@@ -40,7 +40,7 @@ module.exports = {
             "Code": 409,
             "Message": "Conflict"
         },
-        "Not-Acceptable" : {
+        "NotAcceptable" : {
             "Code": 406,
             "Message": "Not-Acceptable"
         },
@@ -49,9 +49,9 @@ module.exports = {
         "OK" :  200,
         "Created" :  201,
         "Accepted" : 202,
-        "No-Content" : 204,
-        "Not-Modified" : 304,
-        "Bad-Request" : 400,
+        "NoContent" : 204,
+        "NotModified" : 304,
+        "BadRequest" : 400,
         "Unauthorized" : 401,
         "Forbidden" : 403,
         "NotFound" : 404,
