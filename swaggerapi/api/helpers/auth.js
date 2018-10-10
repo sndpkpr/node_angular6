@@ -1,4 +1,5 @@
 "use strict";
+const tokens = require("../models/tokens")
 const jwt = require("jsonwebtoken");
 
 const issuer  = 'sandeep-kapri';     
@@ -81,7 +82,19 @@ exports.issueToken = function (payload, role) {
       data4: "Data 4",
   };
   payloadInit = payload
-  console.log(payloadInit, 'payloadInit')
   var token = jwt.sign(payloadInit, secret, signOptions);
-  return token;
+  const query = { user_id: payload._id}
+  const update = {
+    tokenString: token,
+    user_id: payload._id
+  }
+  const option = { upsert: true }
+  tokens.update(query, update, option)
+  .exec(function (err, val) {
+    if (err) {       
+    } else if (val) {
+      return token;
+    } else {
+    }
+  })
 };
