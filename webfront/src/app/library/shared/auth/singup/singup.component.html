@@ -46,6 +46,7 @@
     <input class="" autocomplete="true" name="user" type="checkbox" formControlName="termsCond">Tems
     <app-validations [control]="registerForm.controls.checkbox" [RequiredMessage]="'Group_name_is_required'"></app-validations>
     <button class="btn btn-info btn-block login" type="submit" [disabled]="!registerForm.valid"> {{'Sign_in' | translate}} </button>
+    <re-captcha (resolved)="resolved($event)" siteKey="6LcFVHQUAAAAAGmswLTUlhAZBMD6chOuKhW5fMdT"></re-captcha>
   </form>
 </div>
 <app-global-footer></app-global-footer>

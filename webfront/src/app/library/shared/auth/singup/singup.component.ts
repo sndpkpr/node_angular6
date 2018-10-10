@@ -5,8 +5,8 @@ import { Subscription } from 'rxjs';
 import { LoaderService } from '../../services/loader/loader.service';
 import { CookieService } from 'ngx-cookie';
 import { MembershipService } from 'src/app/library/core/services/membership-service/membership.service';
-import {CalendarModule} from 'primeng/calendar';
-import {CaptchaModule} from 'primeng/captcha';
+import { CalendarModule } from 'primeng/calendar';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-singup',
@@ -49,6 +49,9 @@ export class SingupComponent implements OnInit {
 
       }
     });
+  }
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
   }
 
 }

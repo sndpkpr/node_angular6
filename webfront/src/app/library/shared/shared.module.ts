@@ -14,7 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
 import { CalendarModule } from 'primeng/calendar';
-import {CaptchaModule} from 'primeng/captcha';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -30,7 +30,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule,
     ToastrModule.forRoot(),
     CalendarModule,
-    CaptchaModule,
     TranslateModule.forChild({
       loader: {
         provide: TranslateLoader,
@@ -52,7 +51,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ReactiveFormsModule,
     FormsModule,
     CalendarModule,
-    CaptchaModule,
     ValidationsComponent
   ]
 })

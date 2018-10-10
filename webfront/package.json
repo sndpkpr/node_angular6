@@ -23,6 +23,7 @@
     "@ngx-translate/core": "^10.0.2",
     "@ngx-translate/http-loader": "^3.0.1",
     "core-js": "^2.5.4",
+    "ng-recaptcha": "^4.0.0",
     "ngx-bootstrap": "^3.0.1",
     "ngx-cookie": "^4.0.2",
     "ngx-toastr": "^9.1.0",

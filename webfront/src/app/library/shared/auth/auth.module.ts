@@ -5,11 +5,14 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/component/login.component';
 import { SharedModule } from '../shared.module';
 import { SingupComponent } from './singup/singup.component';
+import { RecaptchaModule } from 'ng-recaptcha';
+
 @NgModule({
   imports: [
     CommonModule,
     AuthRoutingModule,
-    SharedModule
+    RecaptchaModule.forRoot(),
+    SharedModule,
   ],
   declarations: [LoginComponent, SingupComponent]
 })
