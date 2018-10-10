@@ -81,6 +81,7 @@ exports.issueToken = function (payload, role) {
       data4: "Data 4",
   };
   payloadInit = payload
+  console.log(payloadInit, 'payloadInit')
   var token = jwt.sign(payloadInit, secret, signOptions);
   return token;
 };

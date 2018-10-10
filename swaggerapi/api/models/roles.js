@@ -4,12 +4,12 @@ var rolesSchema = new mongoose.Schema({
     roleName: { 
         type: String,
         enum : ['Admin','User'],
-        default: 'Free'
+        default: 'User'
     },
     roleId: { 
         type: Number,
         enum : [ 1 , 2 ],
-        default: 1
+        default: 2
     },
     description: { type: String },
 }, { timestamps: true });
