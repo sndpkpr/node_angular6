@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieModule, CookieService, COOKIE_OPTIONS } from 'ngx-cookie';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
@@ -17,6 +17,7 @@ import {ApiService} from './library/core/services/api-service/api.service';
 import {ErrorHandlerService} from './library/core/services/error-handler/error-handler.service';
 import { NotificationService } from 'src/app/library/core/services/notification-service/notification.service';
 import { AnonymousGuard, AuthenticatedAdmin, AuthenticatedUser } from './library/core/services/auth-service/anonymous-guard.service';
+import { SvInterceptorService } from './library/core/services/interceptor/sv-interceptor.service';
 export function HttpLoaderFactory(http: HttpClient) {
   // return new TranslateHttpLoader(http);
   const cacheBustSuffix = Date.now();
@@ -46,6 +47,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent
   ],
   providers: [ApiService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SvInterceptorService,
+      multi: true,
+    },
     ErrorHandlerService,
     NotificationService,
     CookieService,

@@ -1,18 +1,25 @@
 "use strict";
 
 const app = require("express")();
-var cors = require('cors');
+const fs = require('fs')
+const morgan = require('morgan')
+const path = require('path')
+const cors = require('cors');
 const swaggerTools = require("swagger-tools");
 const YAML = require("yamljs");
 const auth = require("./api/helpers/auth");
 const swaggerConfig = YAML.load("./api/swagger/swagger.yaml");
 const allowedOrigins = require('./config/allowedOrigins')
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 
 require('./config/db')
 
 swaggerTools.initializeMiddleware(swaggerConfig, function(middleware) {
   //Serves the Swagger UI on /docs
   app.use(middleware.swaggerMetadata()); // needs to go BEFORE swaggerSecurity
+  
+  // setup the logger
+  app.use(morgan('combined', { stream: accessLogStream }))
   
   app.use(
     middleware.swaggerSecurity({

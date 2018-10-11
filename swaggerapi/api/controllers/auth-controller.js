@@ -60,37 +60,6 @@ exports.login = function (req, res, next) {
     })
 };
 
-exports.verifyToken = function (req, res, next) {
-  const data = req.body
-  const query = {
-    email: data.username,
-    password: data.password,
-  }
-  const projection = { _id: 1, email: 1 }
-
-  db.users.findOne(query, projection)
-    .populate('role_id')
-    .lean()
-    .exec(function (err, data) {
-      if (err) {
-        let response = { err: "Mongo Err", reply: "Invalid Input" };
-        return res.json(Response(statusCode.OK, "failed", common.validationMessages.internalError, err));
-      } else if (!data) {
-        let response = { err: "No Data", reply: "Invalid Input" };
-        return res.json(Response(statusCode.OK, "failed", common.validationMessages.internalError, err));
-      } else if (data) {
-        const tokenString = auth.issueToken(data);
-        let response = { token: tokenString, data: data };
-        return res.json(Response(statusCode.OK, "failed", common.validationMessages.internalError, err));
-      } else {
-
-      }
-    })
-};
-
-
-
-
 exports.protectedGet = function (req, res, next) {
   let response = { message: "My protected resource for admins and users!" };
   return res.json(Response(statusCode.OK, "failed", common.validationMessages.internalError, err));

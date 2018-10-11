@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   }
   doLogin() {
     this.service = this.membershipservice.login(this.loginForm.value).subscribe(res => {
-      if (res && res.body.code === 200) {
+      if (res && res.body === 200) {
         this.notificationservice.Success({ message: 'message', title: 'title' });
         this.router.navigate(['/dashboard']);
       } else if (res) {
