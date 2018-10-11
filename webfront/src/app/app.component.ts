@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
-declare var $;
+
 @Component({
   selector: 'app-root',
   template: `<router-outlet></router-outlet>`
