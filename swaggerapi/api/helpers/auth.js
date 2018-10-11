@@ -74,7 +74,7 @@ exports.verifyToken = function (req, authOrSecDef, token, callback) {
 /**
  * Token will contain payload(_id, email, role)
 */
-exports.issueToken = function (payload, role) {
+exports.issueToken = function (payload, callback) {
   let payloadInit = {
       data1: "Data 1",
       data2: "Data 2",
@@ -83,17 +83,19 @@ exports.issueToken = function (payload, role) {
   };
   payloadInit = payload
   var token = jwt.sign(payloadInit, secret, signOptions);
-  const query = { user_id: payload._id}
+  // const query = { user_id: payload._id}
+
   const update = {
     tokenString: token,
-    user_id: payload._id
   }
-  const option = { upsert: true }
-  tokens.update(query, update, option)
-  .exec(function (err, val) {
+  const saveData = new tokens(update);
+  // const option = { upsert: true }
+  const option = {  }
+  saveData.save(function (err, val) {
     if (err) {       
     } else if (val) {
-      return token;
+      // return val.tokenString;
+      callback(val)
     } else {
     }
   })

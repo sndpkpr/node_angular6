@@ -17,7 +17,7 @@ exports.newUser = function (req, res, next) {
       saveData.save(function (err, val) {
         if (err) {
           let response = { message: "mongoErr", err: err };
-          return res.json(Response(statusCode.OK, "failed", common.validationMessages.internalError, err));          
+          return res.json(Response(statusCode.OK, "failed", common.validationMessages.internalError, err));
         } else if (val) {
           let response = { message: "created", err: "no-reponse" };
           return res.json(Response(statusCode.OK, "failed", common.validationMessages.internalError, err));
@@ -51,9 +51,11 @@ exports.login = function (req, res, next) {
         let response = { err: "No Data", reply: "Invalid Input" };
         return res.json(Response(statusCode.OK, "failed", common.validationMessages.internalError, err));
       } else if (data) {
-        const tokenString = auth.issueToken(data);
-        let response = { token: tokenString, data: data };
-        return res.json(Response(statusCode.OK, "failed", common.validationMessages.internalError, err));
+        auth.issueToken(data, function (token) {
+          let response = { token: token.tokenString, data: data };
+          return res.json(Response(statusCode.OK, "failed", common.messages.loginSuccess, response));
+        })
+
       } else {
 
       }
