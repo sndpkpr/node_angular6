@@ -1,7 +1,7 @@
 const auth = require("../helpers/auth");
 const common = require("../../config/common")
 
-const db = require('../dbModules.js');
+const db = require('../dbModules');
 const statusCode = common.statusCode
 
 Response = require('../lib/response.js')
