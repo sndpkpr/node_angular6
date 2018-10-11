@@ -41,8 +41,9 @@ export class LoginComponent implements OnInit {
   }
   doLogin() {
     this.service = this.membershipservice.login(this.loginForm.value).subscribe(res => {
-      if (res && res.body === 200) {
-        this.notificationservice.Success({ message: 'message', title: 'title' });
+      if (res && res.body.code === 200) {
+        this.notificationservice.Success({ message: res.body.message, title: res.body.message });
+        this.membershipservice.setCookie('token', res.body.data.token);
         this.router.navigate(['/dashboard']);
       } else if (res) {
         this.notificationservice.Warning({ message: 'message', title: 'title' });

@@ -55,7 +55,6 @@ exports.login = function (req, res, next) {
           let response = { token: token.tokenString, data: data };
           return res.json(Response(statusCode.OK, "failed", common.messages.loginSuccess, response));
         })
-
       } else {
 
       }

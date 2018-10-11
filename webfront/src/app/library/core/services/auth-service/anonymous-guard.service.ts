@@ -1,22 +1,46 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { MembershipService } from '../membership-service/membership.service';
+import { ApiService } from '../api-service/api.service';
 
 // @Injectable({
 //   providedIn: 'root'
 // })
 @Injectable()
 /**
- * token present or not
+ * token not present - @return true
  */
 export class AnonymousGuard implements CanActivate {
-  constructor(private router: Router) { }
+  constructor(private router: Router, private membershipservice: MembershipService, private apiservice: ApiService) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    const token = this.apiservice.getToken();
+    if (token) {
+      this.router.navigate(['/dashboard']);
+      return false;
+    } else {
       return true;
-      // this.router.navigate(['/dashboard']);
-      // return false;
+    }
+  }
+}
+
+/**
+ * token present - @return true
+ */
+export class AnonymousGuard2 implements CanActivate {
+  constructor(private router: Router, private membershipservice: MembershipService, private apiservice: ApiService) { }
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    const token = this.apiservice.getToken();
+    if (token) {
+      return true;
+    } else {
+      this.router.navigate(['/dashboard']);
+      return false;
+    }
   }
 }
 
@@ -25,12 +49,17 @@ export class AnonymousGuard implements CanActivate {
  */
 @Injectable()
 export class AuthenticatedUser implements CanActivate {
-  constructor() { }
+  constructor(private router: Router, private membershipservice: MembershipService, private apiservice: ApiService) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
+    const token = this.apiservice.getToken();
+    if (token) {
       return true;
+    } else {
+      this.router.navigate(['/dashboard']);
+      return false;
+    }
   }
 }
 
@@ -39,12 +68,17 @@ export class AuthenticatedUser implements CanActivate {
  */
 @Injectable()
 export class AuthenticatedAdmin implements CanActivate {
-  constructor() { }
+  constructor(private router: Router, private membershipservice: MembershipService, private apiservice: ApiService) { }
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
+    const token = this.apiservice.getToken();
+    if (token) {
       return true;
+    } else {
+      this.router.navigate(['/dashboard']);
+      return false;
+    }
   }
 }
 

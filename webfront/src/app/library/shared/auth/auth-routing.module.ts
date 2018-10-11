@@ -12,12 +12,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [AnonymousGuard]
+    // canActivate: [AnonymousGuard]
   },
   {
     path: 'sign-up',
     component: SingupComponent,
-    canActivate: [AnonymousGuard]
+    // canActivate: [AnonymousGuard]
   }
 ];
 

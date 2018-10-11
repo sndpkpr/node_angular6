@@ -15,7 +15,7 @@ export class MembershipService {
   login(body: {}) {
     // logic for login
     return this.apiservice.postData(CoreAPIURLs.loginUrl, body, null)
-      .pipe(map((res) => {
+      .pipe(map((res: any) => {
         if (res && res.status === 200) {
           return res;
           // return this.getUserByName('api/Account/GetuserDetailsByUserName',body);
@@ -86,5 +86,9 @@ export class MembershipService {
     this.cookie.remove('repository');
     // this.cookie.remove('NZcookieObj');
     localStorage.clear();
+  }
+
+  getCookie(key: string) {
+    return this.cookie.get(key);
   }
 }

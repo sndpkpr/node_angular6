@@ -17,12 +17,12 @@ const routes: Routes = [
       {
         path: 'auth',
         loadChildren: './library/shared/auth/auth.module#AuthModule',
-        // canActivate: [AnonymousGuard]
+        canActivate: [AnonymousGuard]
       },
       {
         path: '',
         loadChildren: './areas/users/users.module#UsersModule',
-        // canActivate: [AnonymousGuard]
+        canActivate: [AuthenticatedUser]
       },
       // {
       //   path: 'news',
