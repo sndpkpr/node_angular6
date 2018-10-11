@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var eventMappersSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const eventMappersSchema = new mongoose.Schema({
     eventId : {
         type: mongoose.Schema.Types.ObjectId,
 		ref: 'events'
@@ -15,5 +15,5 @@ var eventMappersSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-var users = mongoose.model('eventMappers', eventMappersSchema);
+const users = mongoose.model('eventMappers', eventMappersSchema);
 module.exports = users;

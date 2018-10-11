@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var skillsSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const skillsSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true
@@ -10,5 +10,5 @@ var skillsSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-var users = mongoose.model('skills', skillsSchema);
+const users = mongoose.model('skills', skillsSchema);
 module.exports = users;

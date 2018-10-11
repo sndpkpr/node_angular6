@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var stripeDetailsSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const stripeDetailsSchema = new mongoose.Schema({
     stripeEmail: {
         type: String,
         required: true,
@@ -24,5 +24,5 @@ var stripeDetailsSchema = new mongoose.Schema({
     // }] 
 }, { timestamps: true });
 
-var users = mongoose.model('stripeDetails', stripeDetailsSchema);
+const users = mongoose.model('stripeDetails', stripeDetailsSchema);
 module.exports = users;

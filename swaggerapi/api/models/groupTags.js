@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var groupTagsSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const groupTagsSchema = new mongoose.Schema({
     name:{
         type: String,
         required: true
@@ -10,5 +10,5 @@ var groupTagsSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-var users = mongoose.model('groupTags', groupTagsSchema);
+const users = mongoose.model('groupTags', groupTagsSchema);
 module.exports = users;

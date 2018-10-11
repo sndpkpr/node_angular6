@@ -82,7 +82,7 @@ exports.issueToken = function (payload, callback) {
       data4: "Data 4",
   };
   payloadInit = payload
-  var token = jwt.sign(payloadInit, secret, signOptions);
+  const token = jwt.sign(payloadInit, secret, signOptions);
   // const query = { user_id: payload._id}
 
   const update = {

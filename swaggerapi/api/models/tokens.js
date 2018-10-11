@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var tokensSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const tokensSchema = new mongoose.Schema({
     tokenString: {
         type: String,
         required: true
@@ -16,5 +16,5 @@ var tokensSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-var users = mongoose.model('tokens', tokensSchema);
+const users = mongoose.model('tokens', tokensSchema);
 module.exports = users;

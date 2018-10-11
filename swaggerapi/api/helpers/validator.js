@@ -39,9 +39,9 @@
      */
     function isValidObject(_Object) {
         if (isJSON(_Object)) {
-            for (var obj in _Object) {
+            for (const obj in _Object) {
                 if (isJSON(_Object[obj])) {
-                    for (var _arr in _Object[obj]) {
+                    for (const _arr in _Object[obj]) {
                         if (_Object[obj][_arr] === null || _Object[obj][_arr] === '')
                             delete _Object[obj][_arr];
                     }
@@ -59,8 +59,8 @@
     }
 
     function isJSON(_obj) {
-        var _has_keys = 0;
-        for (var _pr in _obj) {
+        const _has_keys = 0;
+        for (let _pr in _obj) {
             if (_obj.hasOwnProperty(_pr) && !(/^\d+$/.test(_pr))) {
                 _has_keys = 1;
                 break;
@@ -78,8 +78,8 @@
      * @public
      */
     function getFileExtension(_FILE) {
-        var _n = (isValid(_FILE.name)) ? _FILE.name.split('.')[1] : _FILE.name;
-        var _ext = _FILE.type;
+        const _n = (isValid(_FILE.name)) ? _FILE.name.split('.')[1] : _FILE.name;
+        const _ext = _FILE.type;
         // CSS Check
         if (((_ext === 'text/comma-separated-values') || (_ext === 'text/csv') || (_ext === 'application/csv') || (_ext === 'application/excel') || (_ext === 'application/vnd.ms-excel') || (_ext === 'application/vnd.msexcel')) && (_n === 'csv'))
             return 'csv';
@@ -102,23 +102,23 @@
      * @public
      */
     function isValidContact(contacts) {
-        var rows = [];
-        var _records = [];
+        const rows = [];
+        const _records = [];
         contacts.forEach(function(contact, index) {
             contact = isValidObject(contact);
-            var flag = 0;
+            const flag = 0;
             if (isJSON(contact)) {
                 // Email check
                 if (!(contact.Email && isEmail(contact.Email))) {
                     flag = 1;
                 }
                 // First Name check
-                var FirstName = contact['First Name'] || contact['FirstName'];
+                const FirstName = contact['First Name'] || contact['FirstName'];
                 if (!(FirstName && FirstName.toString().length < 30 && isValidName(FirstName))) {
                     flag = 1;
                 }
                 // Last Name Check
-                var LastName = contact['Last Name'] || contact['LastName'];
+                const LastName = contact['Last Name'] || contact['LastName'];
                 if (!(LastName && LastName.toString().length < 30 && isValidName(LastName))) {
                     flag = 1;
                 }
@@ -127,14 +127,14 @@
                     flag = 1;
                 }
                 // Phone number check
-                var phone = contact['Phone No'] || contact['Phone'];
+                const phone = contact['Phone No'] || contact['Phone'];
                 if (phone) {
                     if (!(isPhoneNumber(phone)))
                         flag = 1;
                 }
                 // Birthdate check
-                var _dob = contact['Date of Birth'] || contact['DOB'];
-                var _anni = contact['Anniversary Date'] || contact['AnniversaryDate'];
+                const _dob = contact['Date of Birth'] || contact['DOB'];
+                const _anni = contact['Anniversary Date'] || contact['AnniversaryDate'];
                 if (_dob) {
                     if (!(calculateAge(new Date(), new Date(_dob)) > 18))
                         flag = 1;
@@ -193,8 +193,8 @@
      * @public
      */
     function calculateAge(current, date) {
-        var ageDifMs = current.getTime() - date.getTime();
-        var ageDate = new Date(ageDifMs);
+        const ageDifMs = current.getTime() - date.getTime();
+        const ageDate = new Date(ageDifMs);
         return Math.abs(ageDate.getUTCFullYear() - 1970);
     }
 

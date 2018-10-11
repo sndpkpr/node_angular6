@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var privateMessagesSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const privateMessagesSchema = new mongoose.Schema({
     fromUserid : {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'users'
@@ -18,5 +18,5 @@ var privateMessagesSchema = new mongoose.Schema({
     // }] 
 }, { timestamps: true });
 
-var users = mongoose.model('privateMessages', privateMessagesSchema);
+const users = mongoose.model('privateMessages', privateMessagesSchema);
 module.exports = users;

@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var groupsSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const groupsSchema = new mongoose.Schema({
     groupName: { type: String },
     image: { type: String },
     disc: { type: String },
@@ -14,5 +14,5 @@ var groupsSchema = new mongoose.Schema({
     // }] 
 }, { timestamps: true });
 
-var users = mongoose.model('groups', groupsSchema);
+const users = mongoose.model('groups', groupsSchema);
 module.exports = users;

@@ -1,15 +1,15 @@
-var smtpTransport = require('nodemailer-smtp-transport');
-var nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
+const nodemailer = require('nodemailer');
 
 
-var smtpTransport = nodemailer.createTransport({
+const smtpTransport = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
         user: 'shoutlocaltest@gmail.com',
         pass: 'password@shout'
     }
 });
-var mailOptions = {
+const mailOptions = {
     to: 'checkchectt@yopmail.com',
     from: 'Shout<shoutlocaltest@gmail.com>',
     subject: 'testSubject',

@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var eventKeywordsSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const eventKeywordsSchema = new mongoose.Schema({
     name : { 
         type : String,
         required : true
@@ -10,5 +10,5 @@ var eventKeywordsSchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
-var users = mongoose.model('eventKeywords', eventKeywordsSchema);
+const users = mongoose.model('eventKeywords', eventKeywordsSchema);
 module.exports = users;

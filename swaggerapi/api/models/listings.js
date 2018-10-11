@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var listingsSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const listingsSchema = new mongoose.Schema({
     title: { type: String },
     visiblity: { 
         type: String,
@@ -26,5 +26,5 @@ var listingsSchema = new mongoose.Schema({
     // }] 
 }, { timestamps: true });
 
-var users = mongoose.model('listings', listingsSchema);
+const users = mongoose.model('listings', listingsSchema);
 module.exports = users;

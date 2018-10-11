@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var eventsSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const eventsSchema = new mongoose.Schema({
     eventName: {
         type: String
     },
@@ -64,5 +64,5 @@ var eventsSchema = new mongoose.Schema({
     // }] 
 }, { timestamps: true });
 
-var users = mongoose.model('events', eventsSchema);
+const users = mongoose.model('events', eventsSchema);
 module.exports = users;

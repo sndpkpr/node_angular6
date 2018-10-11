@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var groupMappersSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const groupMappersSchema = new mongoose.Schema({
     groupId : { 
         type: mongoose.Schema.Types.ObjectId,
 		ref: 'groups'
@@ -15,5 +15,5 @@ var groupMappersSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-var users = mongoose.model('groupMappers', groupMappersSchema);
+const users = mongoose.model('groupMappers', groupMappersSchema);
 module.exports = users;

@@ -1,5 +1,5 @@
 
-var abc = new Promise((resolve, reject) => resolve(5));  
+const abc = new Promise((resolve, reject) => resolve(5));  
 
 
 abc.then( (val) =>{
