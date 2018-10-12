@@ -1,0 +1,81 @@
+<!-- <p>
+  edit-profile works!
+</p> -->
+<div class="">
+  <div class="page-header clear-filter" filter-color="orange">
+    <div class="page-header-image rellax-header" data-rellax-speed="-7" style="background-image: url('assets/img/blue.jpg');">
+
+    </div>
+
+
+  </div>
+</div>
+<!-- <div class="jumbotron"> -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 offset-md-3">
+        <div class="form-group">
+            <label>Profile Image</label>
+            <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+        </div>
+      <button class="btn btn-primary" (click)="fileInput.click()">Select Image</button>
+    </div>
+    <div class="col-md-6 offset-md-6">
+      <form id="profileForm" (ngSubmit)='profileUpdate()' novalidate>
+
+
+          <!-- <button (click)="onUpload()">Upload!</button> -->
+
+        <div class="form-group">
+          <label>First Name</label>
+          <input class="form-control" autocomplete="true" name="user" type="text" formControlName="firstName">
+          <!-- <app-validation></app-validation> -->
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input class="form-control" autocomplete="true" name="user" type="text" formControlName="lastName">
+          <!-- <app-validation></app-validation> -->
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input class="form-control" autocomplete="true" name="user" type="text" formControlName="email">
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input class="form-control" autocomplete="true" name="user" onKeyPress="if(this.value.length==10) return false;" type="number"
+            formControlName="number">
+        </div>
+        <div class="form-group">
+          <label>Business Name</label>
+          <input class="form-control" autocomplete="true" name="user" type="text" formControlName="business_name">
+        </div>
+        <div class="form-group">
+          <label>Business Phone</label>
+          <input class="form-control" onKeyPress="if(this.value.length==10) return false;" autocomplete="true" name="user" type="number"
+            formControlName="business_number">
+        </div>
+        <div class="form-group">
+          <label>Skills</label>
+          <input class="form-control" autocomplete="true" name="user" type="text" formControlName="skills">
+        </div>
+        <div class="form-group">
+          <label>Bio</label>
+          <textarea class="form-control" autocomplete="true" name="user" type="text" formControlName="bio"> </textarea>
+        </div>
+        <h4>Stripe Payment Detail</h4>
+        <div class="form-group">
+          <label>Stripe-Email</label>
+          <input class="form-control" autocomplete="true" name="user" type="text" formControlName="stripe_email">
+        </div>
+        <div class="form-group">
+          <label>Account Key</label>
+          <input class="form-control" autocomplete="true" name="user" type="text" formControlName="account_key">
+        </div>
+        <button class="btn btn-success" type="submit">Update</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+<!-- </div> -->
