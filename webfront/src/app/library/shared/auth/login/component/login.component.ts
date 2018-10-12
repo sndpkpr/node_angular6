@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   service: Subscription;
   emailPattern = /^([\w-\.]+\u0040([\w-]+\.)+[\w-]{2,4})?$/;
+  passwordPattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;  // Minimum eight characters, at least one letter and one number:
 
   profileForm = new FormGroup({
     firstName: new FormControl(''),
@@ -36,7 +37,7 @@ export class LoginComponent implements OnInit {
   createForm() {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.pattern(this.passwordPattern)]]
     });
   }
   doLogin() {

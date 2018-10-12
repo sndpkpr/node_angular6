@@ -16,7 +16,8 @@ export class ValidationsComponent {
     'maxlength': (message) => message,
     'email': (message) => message,
     'pattern': (message) => message,
-    'min': (message) => message
+    'min': (message) => message,
+    'notEqual': (message) => message
     // 'pattern': (message, params) => 'The required pattern is: ' + params.requiredPattern,
     // 'age': (message, params) => params.message,
     // 'email': (message, params) => params.message
@@ -71,6 +72,10 @@ export class ValidationsComponent {
       }
       case 'maxlength': {
         this.message = this.MaxMessage;
+        break;
+      }
+      case 'notEqual': {
+        this.message = this.PatternMessage;
         break;
       }
     }
