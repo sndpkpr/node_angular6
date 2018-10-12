@@ -11,6 +11,11 @@ const routes: Routes = [
     canActivate: [AnonymousGuard]
   },
   {
+    path: 'admin',
+    loadChildren: './areas/admin/admin.module#AdminModule',
+    canActivate: [AuthenticatedAdmin]
+  },
+  {
     path: '',
     component: AppComponent,
     children: [
