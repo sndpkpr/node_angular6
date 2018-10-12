@@ -45,12 +45,8 @@ export class SingupComponent implements OnInit {
     });
   }
   private validateAreEqual(fieldControl: FormControl) {
-    // return fieldControl.value === this.registerForm.get('password').value ? null : {
-    //   NotEqual: true
-    // };
     if (this.registerForm) {
-      console.log(this.registerForm);
-      return fieldControl.value === this.registerForm.get('password').value ? null : { notEqual: true };
+      return fieldControl.value === this.registerForm.controls.password.value ? null : { notEqual: true };
     }
   }
   doSignUp() {
@@ -69,7 +65,7 @@ export class SingupComponent implements OnInit {
     }
   }
   resolved(captchaResponse: string) {
-    console.log(`Resolved captcha with response ${captchaResponse}:`);
+    // console.log(`Resolved captcha with response ${captchaResponse}:`);
     if (captchaResponse) {
       this.captchaProved = true;
     }
