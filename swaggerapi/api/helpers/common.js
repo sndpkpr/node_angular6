@@ -1,13 +1,14 @@
 const crypto = require('crypto');
 const bcrypt = require('bcrypt-nodejs');
+const encryption_key= '53creT-Pa55W0rD_2018'
 /**
  * [encryptText - encrypt string]
  * @param  {Object}
  * @return {Object}
  */
 exports.encryptText = function(text) {
-    const cipher = crypto.createCipher('aes-256-ctr', 'Co113Ct1v98'); //(algorithm,password)
-    const crypted = cipher.update(text, 'utf8', 'hex');
+    const cipher = crypto.createCipher('aes-256-ctr', encryption_key); //(algorithm,password)
+    let crypted = cipher.update(text, 'utf8', 'hex');
     crypted += cipher.final('hex');
     return crypted;
 }
@@ -19,8 +20,8 @@ exports.encryptText = function(text) {
  * @return {Object}
  */
 exports.decryptText = function(text, callback) {
-    const decipher = crypto.createDecipher('aes-256-ctr', 'Co113Ct1v98');
-    const dec = decipher.update(text, 'hex', 'utf8'); //update(Buffer(text, 'hex','utf8'));
+    const decipher = crypto.createDecipher('aes-256-ctr', encryption_key);
+    let dec = decipher.update(text, 'hex', 'utf8'); //update(Buffer(text, 'hex','utf8'));
     dec += decipher.final('utf8');
     return callback(null, dec);
 };

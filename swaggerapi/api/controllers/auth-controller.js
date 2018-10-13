@@ -1,7 +1,8 @@
 const auth = require("../helpers/auth");
 const common = require("../../config/common")
-
+const common2 = require("../helpers/common")
 const db = require('../dbModules');
+const commonFun = require('../helpersModules');
 const statusCode = common.statusCode
 
 Response = require('../lib/response.js')
@@ -9,6 +10,7 @@ Response = require('../lib/response.js')
 
 exports.newUser = function (req, res, next) {
   let data = req.body
+  data.password = common2.encryptText(data.password) 
   const query = { roleName: 'User' }
   db.roles.findOne(query).lean().exec(function (err, role) {
     if (role) {
@@ -34,6 +36,7 @@ exports.newUser = function (req, res, next) {
 
 exports.login = function (req, res, next) {
   const data = req.body
+  data.password = common2.decryptText(data.password) 
   const query = {
     email: data.username,
     password: data.password,
