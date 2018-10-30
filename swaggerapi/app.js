@@ -21,7 +21,7 @@ swaggerTools.initializeMiddleware(swaggerConfig, function(middleware) {
   // setup the logger
   app.use(morgan('combined', { stream: accessLogStream }))
 
-  app.use('/static', require("express").static('language'))
+  app.use('/lang', require("express").static('language'))
   app.use(
     middleware.swaggerSecurity({
       //manage token function in the 'auth' module
