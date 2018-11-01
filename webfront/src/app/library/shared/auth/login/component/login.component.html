@@ -1,0 +1,36 @@
+<app-global-header></app-global-header>
+<!-- <form [formGroup]="loginForm" (submit)="doLogin()">
+  
+  <label for="name">Name</label>
+    <input type="text" formControlName="username">
+
+    <label for="name">Name</label>
+    <input type="password" formControlName="password">
+  <button type="submit" >Submit</button>
+</form> -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-6">
+        <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" autocomplete="true" name="user" type="text" placeholder="{{'Enter_your_email' | translate}}"
+              formControlName="username">
+              <app-validations [control]="loginForm.controls.username" [RequiredMessage]="'Group_name_is_required'" [PatternMessage]="'Please_enter_valid_email'"></app-validations>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input class="form-control" autocomplete="true" name="user" type="{{showPassword ? 'text' : 'password'}}" placeholder="{{'Enter_your_password' | translate}}"
+              formControlName="password">
+              <app-validations [control]="loginForm.controls.password" [RequiredMessage]="'Group_name_is_required'" [PatternMessage]="'Please_enter_valid_email'"></app-validations>
+            <i [ngClass]="showPassword ? 'fa fa-eye-slash showHideIcon' : 'fa fa-eye showHideIcon'" (mousedown)="showPassword = true"
+              (mouseup)="showPassword = false" class="fa formEye loginDesktop fa-eye" data-ce-key="960"></i>
+          </div>
+          <button class="btn btn-info btn-block login" type="submit" [disabled]="!loginForm.valid"> {{'Sign_in' | translate}} </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<app-global-footer></app-global-footer>

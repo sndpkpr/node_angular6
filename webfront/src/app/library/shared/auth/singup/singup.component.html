@@ -1,0 +1,77 @@
+<app-global-header></app-global-header>
+<!-- <p>
+  singup works!
+</p> -->
+<!-- <form [formGroup]="registerForm" (submit)="doSignUp()">
+
+  <label for="name">firstName</label>
+  <input type="text" formControlName="firstName">
+
+  <label for="name">lastName</label>
+  <input type="text" formControlName="lastName">
+
+  <label for="name">email</label>
+  <input type="email" formControlName="email">
+
+  <label for="name">dob</label>
+  <input type="text" formControlName="dob">
+
+  <label for="name">password</label>
+  <input type="password" formControlName="password">
+
+  <label for="name">confirmPassword</label>
+  <input type="password" formControlName="confirmPassword">
+
+  <label for="name">terms</label>
+  <input type="text" formControlName="termsCond">
+
+  <button type="submit" [disabled]="!registerForm.valid">Submit</button>
+</form> -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-6">
+                <form [formGroup]="registerForm" (ngSubmit)="doSignUp()">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input class="form-control" autocomplete="true" name="user" type="text" formControlName="firstName">
+                        <app-validations [control]="registerForm.controls.firstName" [RequiredMessage]="'Group_name_is_required'" [PatternMessage]="'Please_enter_valid_email'"></app-validations>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input class="form-control" autocomplete="true" name="user" type="text" formControlName="lastName">
+                        <app-validations [control]="registerForm.controls.lastName" [RequiredMessage]="'Group_name_is_required'" [PatternMessage]="'Please_enter_valid_email'"></app-validations>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control" autocomplete="true" name="user" type="text" formControlName="email">
+                        <app-validations [control]="registerForm.controls.email" [RequiredMessage]="'Group_name_is_required'" [PatternMessage]="'Please_enter_valid_email'"></app-validations>
+                    </div>
+                    <!-- DOB:<input class="form-control" autocomplete="true" name="user" type="text" formControlName="dob"> -->
+                    <div class="form-group">
+                        <label>DOB</label>
+                        <p-calendar class="form-control" type="text" formControlName="dob" [showIcon]="true"></p-calendar>
+                        <app-validations [control]="registerForm.controls.dob" [RequiredMessage]="'Group_name_is_required'"></app-validations>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input class="form-control" autocomplete="true" name="user" type="text" formControlName="password">
+                        <app-validations [control]="registerForm.controls.password" [RequiredMessage]="'Group_name_is_required'" [PatternMessage]="'Please_enter_valid_email'"></app-validations>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input class="form-control" autocomplete="true" name="user" type="text" formControlName="confirmPassword">
+                        <app-validations [control]="registerForm.controls.confirmPassword" [RequiredMessage]="'Group_name_is_required'" [PatternMessage]="'Password_missmatch'"></app-validations>
+                    </div>
+                    <input class="" autocomplete="true" name="user" type="checkbox" formControlName="termsCond">Terms
+
+                    <re-captcha (resolved)="resolved($event)" siteKey="6LcFVHQUAAAAAGmswLTUlhAZBMD6chOuKhW5fMdT"></re-captcha>
+                    <button class="btn btn-info btn-block login" type="submit" [disabled]="!registerForm.valid"> {{'Sign_up' | translate}} </button>
+                    <!-- <button class="btn btn-info btn-block login" type="submit" [disabled]="!registerForm.valid || registerForm.controls.termsCond.value"> {{'Sign_up' | translate}} </button> -->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<app-global-footer></app-global-footer>
